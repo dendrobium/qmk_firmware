@@ -16,6 +16,8 @@ enum layers {
 	NAV, NAV2,
 	MEDIA,
 	WIN,
+	WWW,
+	FN,
 	NUM,
 	SYM_S, SYM_D, SYM_F,
 	SYM_J, SYM_K, SYM_L,
@@ -32,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		{ KC_ESC   , KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     , KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     , KC_BSPC  },
 		{ KC_TAB   , KC_A     , SLT(S)   , SLT(D)   , SLT(F)   , KC_G     , KC_H     , SLT(J)   , SLT(K)   , SLT(L)   , KC_SCLN  , KC_ENT   },
 		{ KC_LSFT  , KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     , KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  , KC_RSFT  },
-		{ KC_LCTL  , KC_LWIN  , KC_LALT  , XXXXXXXX,MO(NAV),LT(NUM,KC_BSPC),KC_BSPC,LT(WIN,KC_SPC),MO(MEDIA),KC_RALT  , KC_APP   , KC_RCTL  },
+		{ KC_LCTL  , KC_LWIN  , KC_LALT  , XXXXXXXX,MO(NAV),LT(NUM,KC_BSPC),KC_BSPC,LT(WIN,KC_SPC),MO(MEDIA),MO(WWW)  , KC_APP   , MO(FN)   },
 	}, //                                  ^^^^^^^^    or   ^^^^^^^^^^^^^^^ put text control keys here instead?
 
 	[NAV] = {
@@ -50,10 +52,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	},
 
 	[WIN] = {
-		{ ________ , A(KC_F4) ,G(KC_LEFT), ________ ,G(KC_RIGHT),C(KC_T)  , KC_F5    ,SC(KC_TAB),SA(KC_ESC),C(KC_TAB) , KC_F12   , ________ },
-		{ ________ , C(KC_A)  , C(KC_S)  , C(KC_D)  , C(KC_F)  , C(KC_O)  , C(KC_W) ,CG(KC_LEFT), A(KC_ESC),CG(KC_RIGHT),KC_F11  , ________ },
+		{ ________ , ________ ,G(KC_LEFT), ________ ,G(KC_RIGHT),C(KC_T)  , ________ , KC_F11   ,SA(KC_ESC), KC_F5    ,KC_F12    , A(KC_F4) },
+		{ ________ , C(KC_A)  , C(KC_S)  , C(KC_D)  , C(KC_F)  , C(KC_O) ,CG(KC_LEFT),SC(KC_TAB), A(KC_ESC),C(KC_TAB),CG(KC_RIGHT),________ },
 		{ ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ },
 		{ ________ , ________ , ________ , ________ , ________ , ________ , ________ , _PARENT_ , ________ , ________ , ________ , ________ },
+	},
+
+	[WWW] = {
+		{ ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , C(KC_W)  , KC_WH_U  , KC_F5    },
+		{ ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , KC_WBAK  , KC_WH_D  , KC_WFWD  },
+		{ ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ },
+		{ ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , _PARENT_ , ________ , ________ },
+	},
+
+	[FN] = {
+		{ KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_F5    , KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   , KC_F11   , KC_F12   },
+		{ ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ },
+		{ ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ },
+		{ ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , ________ , _PARENT_ },
 	},
 
 	[MEDIA] = {
